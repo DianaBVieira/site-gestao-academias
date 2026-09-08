@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://academias.utopiadesenvolvimentos.com.br/sitemap.xml
