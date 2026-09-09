@@ -131,6 +131,39 @@ p { line-height: 1.7; margin: 0; }
 .phone img { border-radius: 18px; }
 .phone figcaption { text-align: center; color: var(--muted); font-size: 12px; padding: 10px 0 4px; }
 
+/* acesso do aluno / do gestor */
+.access { display: grid; gap: 24px; }
+.access-col { display: grid; grid-template-columns: 1fr 300px; gap: 44px; align-items: center; border: 1px solid var(--line); border-radius: 24px; padding: 34px; background: var(--card); }
+.access-col.reverse { grid-template-columns: minmax(0, 1.5fr) 1fr; }
+.access-col .eyebrow { margin-bottom: 12px; }
+.access-col h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); margin-bottom: 16px; }
+.access-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
+.access-col li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #d9d5cf; }
+.access-col li svg { width: 16px; height: 16px; color: var(--orange); flex: none; margin-top: 3px; }
+.phone-lg { width: 300px; margin: 0 auto; border: 1px solid var(--line); border-radius: 30px; padding: 9px; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
+.phone-lg img { border-radius: 22px; }
+
+.browser { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0f0f12; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
+.browser-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 13px; background: #1b1b1f; border-bottom: 1px solid var(--line); }
+.browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a40; }
+.browser-bar i:first-child { background: var(--orange); }
+.browser-bar span { margin-left: 8px; font-size: 11px; color: var(--muted); }
+.browser-body { padding: 22px; background: #faf6f1; color: #1c1c1f; }
+.mk-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.mk-top small { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #a5744a; margin-bottom: 3px; }
+.mk-top strong { font-family: var(--font-display); font-size: 20px; }
+.mk-btn { font-size: 11px; font-weight: 700; color: #fff; background: var(--orange); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
+.mk-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0; }
+.mk-kpi { border: 1px solid rgba(0,0,0,.08); border-radius: 12px; padding: 12px; background: #fff; }
+.mk-kpi small { display: block; font-size: 9.5px; color: #7a7168; margin-bottom: 5px; line-height: 1.3; }
+.mk-kpi b { font-family: var(--font-display); font-size: 22px; }
+.mk-rows { display: grid; gap: 1px; background: rgba(0,0,0,.08); border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; }
+.mk-row { display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 10px; align-items: center; padding: 11px 14px; background: #fff; font-size: 12px; }
+.mk-row > span:last-child { font-size: 9.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; justify-self: end; }
+.mk-row .ok { background: #e4f5ea; color: #1f7a44; }
+.mk-row .pend { background: #fdf1dc; color: #9a6a12; }
+.mk-row .due { background: #fde4e0; color: #b23b28; }
+
 .head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
 .head h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
 .head p { margin-top: 14px; color: var(--muted); font-size: 17px; }
@@ -204,6 +237,9 @@ footer a { color: #d9d5cf; }
   .steps { grid-template-columns: 1fr 1fr; }
   .sig { grid-template-columns: 1fr; text-align: center; gap: 24px; }
   .sig img { max-height: 84px; margin: 0 auto; }
+  .access-col, .access-col.reverse { grid-template-columns: 1fr; gap: 26px; }
+  .access-col.reverse .browser { order: 2; }
+  .mk-kpis { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
   .steps { grid-template-columns: 1fr; }
@@ -211,8 +247,8 @@ footer a { color: #d9d5cf; }
   .phone { width: min(260px, 78vw); }
 }
 /* ===== animações: entrada/saída ao rolar + efeitos nos cards ===== */
-.js .head,.js .feat,.js .step,.js .price,.js .shots,.js .faq-list,.js .sig,.js form.lead{opacity:0;translate:0 26px;transition:opacity .7s ease,translate .8s cubic-bezier(.22,1,.36,1)}
-.js .head.in,.js .feat.in,.js .step.in,.js .price.in,.js .shots.in,.js .faq-list.in,.js .sig.in,.js form.lead.in{opacity:1;translate:0 0}
+.js .head,.js .feat,.js .step,.js .price,.js .shots,.js .faq-list,.js .sig,.js form.lead,.js .access-col{opacity:0;translate:0 26px;transition:opacity .7s ease,translate .8s cubic-bezier(.22,1,.36,1)}
+.js .head.in,.js .feat.in,.js .step.in,.js .price.in,.js .shots.in,.js .faq-list.in,.js .sig.in,.js form.lead.in,.js .access-col.in{opacity:1;translate:0 0}
 
 .feat,.step,.price{position:relative;overflow:hidden;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s ease,box-shadow .35s ease}
 .feat > *,.step > *,.price > *{position:relative;z-index:2}
@@ -228,8 +264,8 @@ footer a { color: #d9d5cf; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
-  .js .head,.js .feat,.js .step,.js .price,.js .shots,.js .faq-list,.js .sig,.js form.lead,
-  .js .head.in,.js .feat.in,.js .step.in,.js .price.in,.js .shots.in,.js .faq-list.in,.js .sig.in,.js form.lead.in{opacity:1 !important;translate:none !important}
+  .js .head,.js .feat,.js .step,.js .price,.js .shots,.js .faq-list,.js .sig,.js form.lead,.js .access-col,
+  .js .head.in,.js .feat.in,.js .step.in,.js .price.in,.js .shots.in,.js .faq-list.in,.js .sig.in,.js form.lead.in,.js .access-col.in{opacity:1 !important;translate:none !important}
   .feat:hover,.step:hover,.price:hover{transform:none}
   .feat::before,.step::before,.price::before,.feat::after,.step::after,.price::after{display:none}
 }
@@ -246,6 +282,7 @@ footer a { color: #d9d5cf; }
     </a>
     <nav>
       <a href="#incluido">O que inclui</a>
+      <a href="#acessos">Aluno e gestor</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#preco">Preço</a>
       <a href="#duvidas">Dúvidas</a>
@@ -278,11 +315,9 @@ footer a { color: #d9d5cf; }
       </div>
 
       <div class="shots">
-        <figure class="phone"><img src="assets/print-site.jpg" width="560" height="1054" loading="lazy" alt="Site institucional da academia no celular" /><figcaption>Site da academia</figcaption></figure>
-        <figure class="phone"><img src="assets/print-painel.jpg" width="560" height="1054" loading="lazy" alt="Área do aluno com treino do dia e cronômetro de séries" /><figcaption>Área do aluno &middot; treino</figcaption></figure>
-        <figure class="phone"><img src="assets/print-treino.jpg" width="560" height="1054" loading="lazy" alt="Biblioteca de exercícios com séries, repetições e peso sugerido" /><figcaption>Biblioteca de exercícios</figcaption></figure>
+        <figure class="phone"><img src="assets/print-site.jpg" width="560" height="1054" loading="lazy" alt="Site institucional da academia no celular, com a marca e os planos" /><figcaption>Seu site, com a marca da academia</figcaption></figure>
       </div>
-      <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:14px">Telas da demonstração com a academia fictícia &ldquo;Vértice&rdquo;.</p>
+      <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:14px">Tela da demonstração com a academia fictícia &ldquo;Vértice&rdquo;.</p>
     </div>
   </section>
 
@@ -314,6 +349,68 @@ footer a { color: #d9d5cf; }
           </ul>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="acessos">
+    <div class="wrap">
+      <div class="head">
+        <h2>Um acesso pro aluno, outro pra <span class="o">gestão</span></h2>
+        <p>Cada pessoa entra e vê só o que precisa — o aluno no celular, a recepção e a direção no computador.</p>
+      </div>
+
+      <div class="access">
+        <article class="access-col">
+          <div class="access-txt">
+            <span class="eyebrow">Acesso do aluno</span>
+            <h3>O treino na palma da mão</h3>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Treino do dia com séries, repetições e carga sugerida</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cronômetro de descanso entre as séries</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Biblioteca de exercícios com imagem e como executar</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Histórico de peso, medidas e composição corporal</li>
+            </ul>
+          </div>
+          <div class="phone-lg">
+            <img src="assets/print-painel.jpg" width="560" height="1054" loading="lazy" alt="Área do aluno: treino do dia, séries e cronômetro de descanso" />
+          </div>
+        </article>
+
+        <article class="access-col reverse">
+          <div class="browser" aria-hidden="true">
+            <div class="browser-bar"><i></i><i></i><i></i><span>painel · vértice</span></div>
+            <div class="browser-body">
+              <div class="mk-top">
+                <div><small>Visão geral</small><strong>Olá, Administrador</strong></div>
+                <span class="mk-btn">+ Cadastrar aluno</span>
+              </div>
+              <div class="mk-kpis">
+                <div class="mk-kpi"><small>Alunos ativos</small><b>8</b></div>
+                <div class="mk-kpi"><small>Pagamentos pendentes</small><b>4</b></div>
+                <div class="mk-kpi"><small>Anamneses pendentes</small><b>2</b></div>
+                <div class="mk-kpi"><small>Treinos hoje</small><b>31</b></div>
+              </div>
+              <div class="mk-rows">
+                <div class="mk-row"><span>Camila Moreira</span><span>Performance</span><span class="ok">Ativo</span></div>
+                <div class="mk-row"><span>Rodrigo Alencar</span><span>Individual</span><span class="ok">Ativo</span></div>
+                <div class="mk-row"><span>Vera Santiago</span><span>Essencial</span><span class="pend">Pendente</span></div>
+                <div class="mk-row"><span>Bruno Kowalski</span><span>Performance</span><span class="due">Vencido</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="access-txt">
+            <span class="eyebrow">Acesso do gestor</span>
+            <h3>A operação inteira num painel</h3>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Alunos, planos e vencimentos em uma tabela só</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Pagamentos recebidos, pendentes e vencidos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Montagem de treino por dia da semana, por aluno</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ficha de saúde e avaliação corporal de cada aluno</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:18px">Telas da demonstração com a academia fictícia &ldquo;Vértice&rdquo;. O painel do gestor é usado no computador.</p>
     </div>
   </section>
 
@@ -471,7 +568,7 @@ footer a { color: #d9d5cf; }
 <script>
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revealEls = [].slice.call(document.querySelectorAll('.head, .feat, .step, .price, .shots, .faq-list, .sig, form.lead'));
+  var revealEls = [].slice.call(document.querySelectorAll('.head, .feat, .step, .price, .shots, .faq-list, .sig, form.lead, .access-col'));
   if (reduced || !('IntersectionObserver' in window)) {
     revealEls.forEach(function (el) { el.classList.add('in'); });
   } else {
