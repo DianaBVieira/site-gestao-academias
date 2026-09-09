@@ -154,26 +154,26 @@ p { line-height: 1.7; margin: 0; }
 .phone-lg { width: 300px; margin: 0 auto; border: 1px solid var(--line); border-radius: 30px; padding: 9px; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
 .phone-lg img { border-radius: 22px; }
 
-.browser { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0f0f12; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
-.browser-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 13px; background: #1b1b1f; border-bottom: 1px solid var(--line); }
-.browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a40; }
-.browser-bar i:first-child { background: var(--orange); }
-.browser-bar span { margin-left: 8px; font-size: 11px; color: var(--muted); }
-.browser-body { padding: 22px; background: #faf6f1; color: #1c1c1f; }
-.mk-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.mk-top small { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #a5744a; margin-bottom: 3px; }
-.mk-top strong { font-family: var(--font-display); font-size: 20px; }
-.mk-btn { font-size: 11px; font-weight: 700; color: #fff; background: var(--orange); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
-.mk-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0; }
-.mk-kpi { border: 1px solid rgba(0,0,0,.08); border-radius: 12px; padding: 12px; background: #fff; }
-.mk-kpi small { display: block; font-size: 9.5px; color: #7a7168; margin-bottom: 5px; line-height: 1.3; }
-.mk-kpi b { font-family: var(--font-display); font-size: 22px; }
-.mk-rows { display: grid; gap: 1px; background: rgba(0,0,0,.08); border: 1px solid rgba(0,0,0,.08); border-radius: 12px; overflow: hidden; }
-.mk-row { display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 10px; align-items: center; padding: 11px 14px; background: #fff; font-size: 12px; }
-.mk-row > span:last-child { font-size: 9.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; justify-self: end; }
-.mk-row .ok { background: #e4f5ea; color: #1f7a44; }
-.mk-row .pend { background: #fdf1dc; color: #9a6a12; }
-.mk-row .due { background: #fde4e0; color: #b23b28; }
+/* carrossel coverflow (mesmo modelo do site da academia Vértice) */
+.coverflow { --cf-w: min(30rem, 88%); --cf-h: calc(var(--cf-w) / 1.42); --cf-radius: 14px; --cf-dim: .5; --cf-dur: .6s; --cf-ease: cubic-bezier(.22,1,.36,1); outline: none; width: 100%; }
+.coverflow__stage { position: relative; height: calc(var(--cf-h) + 1rem); display: flex; align-items: center; justify-content: center; perspective: 1600px; overflow: hidden; touch-action: pan-y; }
+.coverflow__rail { position: relative; width: var(--cf-w); height: var(--cf-h); transform-style: preserve-3d; }
+.cf-card { position: absolute; left: 50%; top: 50%; margin: 0; width: var(--cf-w); height: var(--cf-h); border-radius: var(--cf-radius); overflow: hidden; background: #0f0f12; border: 1px solid var(--line); box-shadow: 0 40px 80px rgba(0,0,0,.55); transform-style: preserve-3d; transform-origin: center; transition: transform var(--cf-dur) var(--cf-ease), opacity var(--cf-dur) var(--cf-ease); cursor: pointer; }
+.cf-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; user-select: none; -webkit-user-drag: none; }
+.cf-card::after { content: ""; position: absolute; inset: 0; background: #0a0a0c; opacity: var(--cf-dim); pointer-events: none; transition: opacity var(--cf-dur) var(--cf-ease); }
+.cf-card[data-active="true"] { cursor: default; }
+.cf-card[data-active="true"]::after { opacity: 0; }
+.coverflow__ui { display: flex; align-items: center; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+.cf-btn { width: 2.9rem; height: 2.9rem; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.cf-btn:hover { background: var(--orange); color: #12060a; border-color: transparent; transform: scale(1.06); }
+.cf-btn svg { width: 18px; height: 18px; }
+.cf-info { flex: 1 1 13rem; min-width: 0; }
+.cf-info h3 { font-size: 16px; color: var(--ink); margin: 0; }
+.cf-info p { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.cf-dots { display: flex; gap: 7px; flex: 0 0 auto; }
+.cf-dot { width: .5rem; height: .5rem; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.24); cursor: pointer; transition: background .2s, width .2s; }
+.cf-dot[aria-current="true"] { background: var(--orange); width: 1.5rem; }
+@media (prefers-reduced-motion: reduce) { .cf-card { transition: none; } }
 
 .head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
 .head h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
@@ -253,8 +253,8 @@ footer a { color: #d9d5cf; }
   .sig { grid-template-columns: 1fr; text-align: center; gap: 24px; }
   .sig img { max-height: 84px; margin: 0 auto; }
   .access-col, .access-col.reverse { grid-template-columns: 1fr; gap: 26px; }
-  .access-col.reverse .browser { order: 2; }
-  .mk-kpis { grid-template-columns: 1fr 1fr; }
+  .access-col.reverse .coverflow { order: 2; }
+  .coverflow { --cf-w: min(30rem, 96%); }
 }
 @media (max-width: 560px) {
   .steps { grid-template-columns: 1fr; }
@@ -404,25 +404,25 @@ footer a { color: #d9d5cf; }
         </article>
 
         <article class="access-col reverse">
-          <div class="browser" aria-hidden="true">
-            <div class="browser-bar"><i></i><i></i><i></i><span>painel · vértice</span></div>
-            <div class="browser-body">
-              <div class="mk-top">
-                <div><small>Visão geral</small><strong>Olá, Administrador</strong></div>
-                <span class="mk-btn">+ Cadastrar aluno</span>
+          <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carrossel" aria-label="Telas do painel do gestor">
+            <div class="coverflow__stage">
+              <div class="coverflow__rail" id="cfRail">
+                <figure class="cf-card" data-title="Visão geral" data-desc="Alunos ativos, pagamentos e treinos do dia num relance.">
+                  <img src="assets/painel-visao-geral.jpg" width="1400" height="1000" loading="lazy" alt="Painel do gestor — visão geral com indicadores" />
+                </figure>
+                <figure class="cf-card" data-title="Alunos" data-desc="Cadastros, objetivos, planos, vencimentos e situação.">
+                  <img src="assets/painel-alunos.jpg" width="1400" height="1114" loading="lazy" alt="Painel do gestor — lista de alunos cadastrados" />
+                </figure>
+                <figure class="cf-card" data-title="Pagamentos" data-desc="Recebido no mês, pendentes e vencidos, aluno por aluno.">
+                  <img src="assets/painel-pagamentos.jpg" width="1400" height="1114" loading="lazy" alt="Painel do gestor — financeiro e pagamentos" />
+                </figure>
               </div>
-              <div class="mk-kpis">
-                <div class="mk-kpi"><small>Alunos ativos</small><b>8</b></div>
-                <div class="mk-kpi"><small>Pagamentos pendentes</small><b>4</b></div>
-                <div class="mk-kpi"><small>Anamneses pendentes</small><b>2</b></div>
-                <div class="mk-kpi"><small>Treinos hoje</small><b>31</b></div>
-              </div>
-              <div class="mk-rows">
-                <div class="mk-row"><span>Camila Moreira</span><span>Performance</span><span class="ok">Ativo</span></div>
-                <div class="mk-row"><span>Rodrigo Alencar</span><span>Individual</span><span class="ok">Ativo</span></div>
-                <div class="mk-row"><span>Vera Santiago</span><span>Essencial</span><span class="pend">Pendente</span></div>
-                <div class="mk-row"><span>Bruno Kowalski</span><span>Performance</span><span class="due">Vencido</span></div>
-              </div>
+            </div>
+            <div class="coverflow__ui">
+              <button class="cf-btn" id="cfPrev" type="button" aria-label="Tela anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+              <div class="cf-info"><h3 id="cfTitle"></h3><p id="cfDesc"></p></div>
+              <div class="cf-dots" id="cfDots"></div>
+              <button class="cf-btn" id="cfNext" type="button" aria-label="Próxima tela"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
             </div>
           </div>
           <div class="access-txt">
@@ -615,6 +615,104 @@ footer a { color: #d9d5cf; }
       setTimeout(function () { card.classList.remove('tapped'); }, 520);
     });
   });
+})();
+</script>
+
+<script>
+/* carrossel coverflow — mesmo modelo do site da academia Vértice, com giro automático */
+(function () {
+  var root = document.getElementById('coverflow');
+  var rail = document.getElementById('cfRail');
+  if (!root || !rail) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cards = [].slice.call(rail.querySelectorAll('.cf-card'));
+  var n = cards.length;
+  if (!n) return;
+
+  var TILT = 12, SIDE_TILT = 8, DEPTH = 240, SCALE_STEP = 0.16, MAX_VISIBLE = 2, SPREAD = 0.6, DUR = 600;
+  var titleEl = document.getElementById('cfTitle');
+  var descEl = document.getElementById('cfDesc');
+  var dotsEl = document.getElementById('cfDots');
+  var active = 0, locked = false;
+
+  cards.forEach(function (card, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'cf-dot';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', card.dataset.title || ('Tela ' + (i + 1)));
+    dot.addEventListener('click', function () { go(i); stopAuto(); });
+    dotsEl.appendChild(dot);
+  });
+  var dots = [].slice.call(dotsEl.children);
+
+  function layout() {
+    var cardW = cards[0].offsetWidth || 400;
+    cards.forEach(function (card, i) {
+      var rel = i - active;
+      if (rel > n / 2) rel -= n;
+      if (rel < -n / 2) rel += n;
+      var ax = Math.abs(rel);
+      var visible = ax <= MAX_VISIBLE;
+      var scale = Math.max(0.4, 1 - ax * SCALE_STEP);
+      card.style.transform =
+        'translate(-50%,-50%) translateX(' + (rel * cardW * SPREAD) + 'px) ' +
+        'translateZ(' + (-ax * DEPTH) + 'px) rotateY(' + (-rel * TILT) + 'deg) ' +
+        'rotateZ(' + (rel * SIDE_TILT) + 'deg) scale(' + scale + ')';
+      card.style.opacity = visible ? '1' : '0';
+      card.style.pointerEvents = visible ? 'auto' : 'none';
+      card.dataset.active = String(rel === 0);
+      card.setAttribute('aria-hidden', String(!visible));
+    });
+    var cur = cards[active];
+    if (titleEl) titleEl.textContent = cur.dataset.title || '';
+    if (descEl) descEl.textContent = cur.dataset.desc || '';
+    dots.forEach(function (d, i) { d.setAttribute('aria-current', String(i === active)); });
+  }
+
+  function go(i) {
+    if (locked) return;
+    var next = ((i % n) + n) % n;
+    if (next === active) return;
+    if (!reduced) { locked = true; setTimeout(function () { locked = false; }, DUR); }
+    active = next;
+    layout();
+  }
+  function step(d) { go(active + d); }
+
+  cards.forEach(function (card, i) {
+    card.addEventListener('click', function () { if (card.dataset.active !== 'true') { go(i); stopAuto(); } });
+  });
+  document.getElementById('cfPrev').addEventListener('click', function () { step(-1); stopAuto(); });
+  document.getElementById('cfNext').addEventListener('click', function () { step(1); stopAuto(); });
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); stopAuto(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); stopAuto(); }
+  });
+
+  var stage = root.querySelector('.coverflow__stage');
+  var dragFrom = null;
+  stage.addEventListener('pointerdown', function (e) { dragFrom = e.clientX; });
+  stage.addEventListener('pointerup', function (e) {
+    if (dragFrom === null) return;
+    var dx = e.clientX - dragFrom;
+    dragFrom = null;
+    if (Math.abs(dx) > 40) { step(dx < 0 ? 1 : -1); stopAuto(); }
+  });
+  stage.addEventListener('pointercancel', function () { dragFrom = null; });
+  window.addEventListener('resize', layout, { passive: true });
+
+  /* giro automático — pausa em hover/foco/aba oculta, para de vez após interação */
+  var timer = null, stopped = false;
+  function startAuto() { if (reduced || stopped) return; clearInterval(timer); timer = setInterval(function () { if (!document.hidden) step(1); }, 5000); }
+  function stopAuto() { stopped = true; clearInterval(timer); }
+  root.addEventListener('mouseenter', function () { clearInterval(timer); });
+  root.addEventListener('mouseleave', function () { if (!stopped) startAuto(); });
+  root.addEventListener('focusin', function () { clearInterval(timer); });
+  root.addEventListener('focusout', function () { if (!stopped) startAuto(); });
+
+  layout();
+  startAuto();
 })();
 </script>
 </body>
